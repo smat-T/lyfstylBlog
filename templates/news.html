@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title>News</title>
+</head>
+<body>
+	<div class="container">
+		{% if all_headlines %}
+		<center><h1>Headlines</h1></center>
+		<div class="row">
+			{% for headline in all_headlines %}
+			<div class="col s12 m12">
+				<div class="card">
+					<div class="card-image">
+						<center>
+							<div style="width: 90%; align-items: center; padding: 15px;">
+								<img src="{{headline['urlToImage']}}" class="responsive-img image-container z-depth-3" style="border-radius: 20px;">
+							</div>
+						</center>
+					</div>
+					<div class="card-content custom-card">
+						{{ headline['source']['name'] }} &NonBreakingSpace; | &NonBreakingSpace;
+							<b>Published:</b> {{headline['publishedAt']}}
+					<span class="card-title">{{headline['title']}}</span>
+					<p>{{headline['description']}} <a href="{{headline['url']}}" target="blank">Read More...</a></p>
+					</div>
+					<div class="card-action content">
+						<center>
+							<div class="row ">
+									<div class="col s4 m4">
+										<a href="https://example.com/share">
+											<i class="material-icons share-button">share</i> 
+										</a>
+									</div>
+									<div class="col s4 m4">
+										<a href="https://example.com/share">
+											<i class="material-icons share-button">favorite</i> 
+										</a>
+									</div>
+									<div class="col s4 m4">
+										<a href="https://example.com/share">
+											<i class="material-icons share-button">bookmark</i> 
+										</a>
+									</div>
+							</div>
+						</center>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+
+		{% if all_articles %}
+		<center><h1>Results for '{{keyword}}'</h1></center>
+		<div class="row">
+			{% for article in all_articles %}
+			<div class="col s12 m6">
+				<div class="card custom-card">
+					<div class="card-image">
+						<center>
+							<div style="width: 90%; align-items: center; padding: 15px;">
+								<img src="{{article['urlToImage']}}" class="responsive-img image-container z-depth-3" style="border-radius: 20px;">
+							</div>
+						</center>
+					</div>
+					<div class="card-content">
+						{{ article['source']['name'] }} &NonBreakingSpace; | &NonBreakingSpace;
+							<b>Published:</b> {{article['publishedAt']}}
+					<span class="card-title">{{article['title']}}</span>
+					<p>{{article['description']}} <a href="{{article['url']}}" target="blank">Read More...</a></p>
+					</div>
+					<div class="card-action content">
+						<center>
+							<div class="row ">
+									<div class="col s4 m6">
+										<a href="https://example.com/share">
+											<i class="material-icons share-button">share</i> 
+										</a>
+									</div>
+									<div class="col s4 m4">
+										<a href="https://example.com/share">
+											<i class="material-icons share-button">favorite</i> 
+										</a>
+									</div>
+									<div class="col s4 m4">
+										<a href="https://example.com/share">
+											<i class="material-icons share-button">bookmark</i> 
+										</a>
+									</div>
+							</div>
+						</center>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+	</div>
+
+
+	  <!-- Include Materialize JavaScript (Optional) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	
+</body>
+</html>
+
+
+<style>
+	.share-button {
+		color: #000000;
+		font-size: 25px;
+	}
+
+	.share-button:hover {
+		color: #8a8a8a;
+		font-size: 28px;
+	}
+
+
+</style>
